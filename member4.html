@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陈雨桐 · 个人主页</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f6b5e'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23faf6ef' font-family='serif'%3E%E5%90%88%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --ink:#22303a; --paper:#faf6ef; --accent:#b33a2b; --green:#2f6b5e; --gold:#c99a3f; --line:#e3dacb; }
+/* 共用选择器：h1、h2、h3 与 p、li */
+h1, h2, h3 { font-family: "Noto Serif SC", "Songti SC", "SimSun", serif; line-height: 1.35; }
+p, li { font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.9; font-size: 15px; }
+a { color: var(--green); text-decoration: none; }
+/* <a> 标签悬浮效果 */
+a:hover { color: var(--accent); text-decoration: underline; }
+body { background: var(--paper); color: var(--ink); }
+
+nav { background: #1e2b30; position: sticky; top: 0; z-index: 99; }
+nav ul { display: flex; flex-wrap: wrap; align-items: center; list-style: none; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+/* 上下文选择器：nav 内部的 li a */
+nav ul li a { display: block; padding: 15px 14px; color: #f0ece2; font-size: 14px; letter-spacing: 1px; text-decoration: none; }
+nav ul li a:hover { color: #f3c969; background: #2a3c42; text-decoration: none; }
+nav .logo { font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 18px; color: #f3c969; margin-right: 18px; }
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+section { padding: 50px 0 10px; }
+.section-tag { display: inline-block; background: var(--green); color: #fff; font-size: 12px; letter-spacing: 3px; padding: 4px 14px; border-radius: 20px; margin-bottom: 14px; }
+.section-title { font-size: 28px; font-weight: 900; margin-bottom: 6px; }
+.section-sub { color: #6b6b60; font-size: 14px; margin-bottom: 24px; }
+
+/* 个人名片（类选择器） */
+.profile { display: flex; gap: 34px; align-items: center; background: #fffdf8; border: 1px solid var(--line); border-radius: 18px; padding: 36px 40px; margin-top: 30px; }
+.profile img { width: 168px; height: 168px; border-radius: 50%; object-fit: cover; border: 4px solid var(--gold); flex-shrink: 0; }
+.profile h1 { font-size: 36px; font-weight: 900; }
+.profile .sid { display: inline-block; margin-top: 8px; background: #f3ecdf; color: #6b5a3a; font-size: 13px; letter-spacing: 2px; padding: 4px 16px; border-radius: 14px; }
+.profile .major { margin-top: 10px; color: #7c7c70; font-size: 14px; }
+.profile .mail { margin-top: 12px; display: inline-block; }
+
+.hobby { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: center; background: #fffdf8; border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+.hobby img { width: 100%; height: 260px; object-fit: cover; border-radius: 10px; }
+
+/* 职业规划时间轴：grid 三列（时间 / 轴 / 内容） */
+.tl { display: grid; grid-template-columns: 96px 42px 1fr; }
+.tl .t { text-align: right; padding: 18px 0; font-weight: 700; color: var(--accent); font-size: 14px; }
+.tl .dot { justify-self: center; position: relative; }
+.tl .dot i { display: block; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); margin-top: 24px; box-shadow: 0 0 0 4px #f3e7cd; }
+.tl .dot::after { content: ""; position: absolute; left: 5px; top: 40px; bottom: -14px; width: 2px; background: var(--line); }
+.tl .c { padding: 14px 0 18px 6px; }
+.tl .c b { display: block; font-size: 15px; margin-bottom: 4px; }
+.tl .c p { font-size: 13.5px; color: #6b6b60; }
+.tl > div:last-child .dot::after { display: none; }
+
+.link-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
+.link-row a { background: #fffdf8; border: 1px solid var(--line); padding: 12px 22px; border-radius: 10px; font-size: 14px; }
+.link-row a:hover { border-color: var(--accent); background: #fdf3ea; text-decoration: none; }
+
+footer { margin-top: 60px; background: #1e2b30; color: #b9c2bd; padding: 26px 20px; text-align: center; font-size: 13px; }
+footer p { font-size: 13px; }
+
+@media (max-width: 800px) {
+  .profile { flex-direction: column; text-align: center; padding: 28px 22px; }
+  .hobby { grid-template-columns: 1fr; }
+  .hobby img { height: 210px; }
+}
+@media (max-width: 640px) {
+  nav ul li a { padding: 12px 9px; font-size: 13px; }
+  .profile img { width: 130px; height: 130px; }
+  .profile h1 { font-size: 28px; }
+  .section-title { font-size: 23px; }
+  .tl { grid-template-columns: 72px 34px 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li class="logo">合肥探索小组</li>
+    <li><a href="index.html">团队主页</a></li>
+    <li><a href="member1.html">王明远</a></li>
+    <li><a href="member2.html">李思琪</a></li>
+    <li><a href="member3.html">张浩然</a></li>
+    <li><a href="skills.html">职业技能</a></li>
+  </ul>
+</nav>
+
+<main class="wrap">
+
+  <!-- ===== 个人名片 ===== -->
+  <section>
+    <span class="section-tag">PROFILE</span>
+    <div class="profile">
+      <img src="assets/member4.jpg" alt="陈雨桐照片">
+      <div>
+        <h1>陈雨桐</h1>
+        <span class="sid">学号 2023010104</span>
+        <p class="major">人工智能 · 2304班 · 女 · 安徽蚌埠</p>
+        <p style="margin-top:10px; color:#6b6b60;">"让机器学会理解世界，也保留人类创造的美。"</p>
+        <a class="mail" href="mailto:chenyutong@example.com" style="margin-top:14px; display:inline-block; padding:10px 22px; background:var(--green); color:#fff; border-radius:24px; font-size:14px;">电子邮箱：chenyutong@example.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 个人背景 ===== -->
+  <section>
+    <span class="section-tag">BACKGROUND</span>
+    <h2 class="section-title">个人背景</h2>
+    <p>我来自"珍珠城"蚌埠，淮河穿城而过。从小学习绘画，2018 年第一次看到围棋 AI 战胜人类棋手，我被"机器也能学会创造"深深震撼；高二时接触 Python，用爬虫给班级做过成绩分析小工具，从此立志学习人工智能。</p>
+    <p style="margin-top:12px;">2023 年我考入本校人工智能专业，先后加入机器人社团和自然语言处理课题组做科研助理，目前正跟着学长学习 Transformer 与大模型微调，希望未来能让 AI 技术真正落地到创意与教育场景。</p>
+  </section>
+
+  <!-- ===== 兴趣爱好 ===== -->
+  <section>
+    <span class="section-tag">HOBBIES</span>
+    <h2 class="section-title">兴趣爱好</h2>
+    <p class="section-sub">绘画是我的"第一门语言"，也是我理解 AI 生成艺术的起点。</p>
+    <div class="hobby">
+      <img src="assets/hobby-painting.jpg" alt="绘画爱好">
+      <div>
+        <h3 style="color:var(--accent); margin-bottom:10px;">绘画 &amp; 手工</h3>
+        <p>我从小学五年级开始学素描和水彩，现在喜欢用数位板画插画，也尝试 Stable Diffusion 等生成式工具——比较"手绘"与"模型生成"的过程特别有意思：手绘考验观察与耐心，模型考验提示词与审美。</p>
+        <p style="margin-top:10px;">我还喜欢做羊毛毡和拼豆手工，宿舍书桌上摆满了作品。这些爱好让我在设计 AI 产品时更在意"人"的感受。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 页面跳转 ===== -->
+  <section>
+    <span class="section-tag">LINKS</span>
+    <h2 class="section-title">快速跳转</h2>
+    <p class="section-sub">去团队主页看看大家的家乡介绍，或查看团队整体的职业技能发展规划。</p>
+    <div class="link-row">
+      <a href="index.html" style="background:var(--green); color:#fff; border:none;">回到团队主页</a>
+      <a href="skills.html" style="background:var(--accent); color:#fff; border:none;">查看职业技能页面</a>
+      <a href="mailto:chenyutong@example.com">发送邮件给我</a>
+    </div>
+  </section>
+
+  <!-- ===== 职业发展规划 ===== -->
+  <section>
+    <span class="section-tag">CAREER PLAN</span>
+    <h2 class="section-title">个人职业技能发展规划</h2>
+    <p class="section-sub">目标岗位：AI 算法工程师 &rarr; 大模型 / 多模态方向</p>
+    <div class="tl">
+      <div class="t">大一 · 打基础</div>
+      <div class="dot"><i></i></div>
+      <div class="c"><b>数学与 Python</b><p>夯实高等数学、线性代数、概率论与 Python 编程，理解梯度下降与矩阵运算的基本原理。</p></div>
+
+      <div class="t">大二 · 学原理</div>
+      <div class="dot"><i></i></div>
+      <div class="c"><b>机器学习与深度学习</b><p>系统学习机器学习经典算法与 PyTorch 框架，完成图像分类、文本情感分析等入门项目。</p></div>
+
+      <div class="t">大三 · 做研究</div>
+      <div class="dot"><i></i></div>
+      <div class="c"><b>NLP / 大模型与实习</b><p>深入 Transformer、LoRA 微调与多模态技术，加入实验室项目或企业实习，争取发表论文或开源贡献。</p></div>
+
+      <div class="t">大四 · 定去向</div>
+      <div class="dot"><i></i></div>
+      <div class="c"><b>保研 / 秋招</b><p>以读研深造或大厂算法岗为目标，沉淀项目与竞赛成果，向大模型应用与 AI 产品方向持续深耕。</p></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 合肥城市探索小组 · 陈雨桐 2023010104 · 课程演示项目</p>
+</footer>
+
+</body>
+</html>

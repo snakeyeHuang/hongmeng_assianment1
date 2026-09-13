@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>李思琪 · 个人主页</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f6b5e'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23faf6ef' font-family='serif'%3E%E5%90%88%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --ink:#22303a; --paper:#faf6ef; --accent:#b33a2b; --green:#2f6b5e; --gold:#c99a3f; --line:#e3dacb; }
+/* 共用选择器：h1、h2、h3 与 p、li */
+h1, h2, h3 { font-family: "Noto Serif SC", "Songti SC", "SimSun", serif; line-height: 1.35; }
+p, li { font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.9; font-size: 15px; }
+a { color: var(--green); text-decoration: none; }
+/* <a> 标签悬浮效果 */
+a:hover { color: var(--accent); text-decoration: underline; }
+body { background: var(--paper); color: var(--ink); }
+
+nav { background: #1e2b30; position: sticky; top: 0; z-index: 99; }
+nav ul { display: flex; flex-wrap: wrap; align-items: center; list-style: none; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+/* 上下文选择器：nav 内部的 li a */
+nav ul li a { display: block; padding: 15px 14px; color: #f0ece2; font-size: 14px; letter-spacing: 1px; text-decoration: none; }
+nav ul li a:hover { color: #f3c969; background: #2a3c42; text-decoration: none; }
+nav .logo { font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 18px; color: #f3c969; margin-right: 18px; }
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+section { padding: 50px 0 10px; }
+.section-tag { display: inline-block; background: var(--green); color: #fff; font-size: 12px; letter-spacing: 3px; padding: 4px 14px; border-radius: 20px; margin-bottom: 14px; }
+.section-title { font-size: 28px; font-weight: 900; margin-bottom: 6px; }
+.section-sub { color: #6b6b60; font-size: 14px; margin-bottom: 24px; }
+
+/* 个人名片（类选择器） */
+.profile { display: flex; gap: 34px; align-items: center; background: #fffdf8; border: 1px solid var(--line); border-radius: 18px; padding: 36px 40px; margin-top: 30px; }
+.profile img { width: 168px; height: 168px; border-radius: 50%; object-fit: cover; border: 4px solid var(--gold); flex-shrink: 0; }
+.profile h1 { font-size: 36px; font-weight: 900; }
+.profile .sid { display: inline-block; margin-top: 8px; background: #f3ecdf; color: #6b5a3a; font-size: 13px; letter-spacing: 2px; padding: 4px 16px; border-radius: 14px; }
+.profile .major { margin-top: 10px; color: #7c7c70; font-size: 14px; }
+.profile .mail { margin-top: 12px; display: inline-block; }
+
+.hobby { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: center; background: #fffdf8; border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+.hobby img { width: 100%; height: 260px; object-fit: cover; border-radius: 10px; }
+
+/* 职业规划时间轴：grid 三列（时间 / 轴 / 内容） */
+.tl { display: grid; grid-template-columns: 96px 42px 1fr; }
+.tl .t { text-align: right; padding: 18px 0; font-weight: 700; color: var(--accent); font-size: 14px; }
+.tl .dot { justify-self: center; position: relative; }
+.tl .dot i { display: block; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); margin-top: 24px; box-shadow: 0 0 0 4px #f3e7cd; }
+.tl .dot::after { content: ""; position: absolute; left: 5px; top: 40px; bottom: -14px; width: 2px; background: var(--line); }
+.tl .c { padding: 14px 0 18px 6px; }
+.tl .c b { display: block; font-size: 15px; margin-bottom: 4px; }
+.tl .c p { font-size: 13.5px; color: #6b6b60; }
+.tl > div:last-child .dot::after { display: none; }
+
+.link-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
+.link-row a { background: #fffdf8; border: 1px solid var(--line); padding: 12px 22px; border-radius: 10px; font-size: 14px; }
+.link-row a:hover { border-color: var(--accent); background: #fdf3ea; text-decoration: none; }
+
+footer { margin-top: 60px; background: #1e2b30; color: #b9c2bd; padding: 26px 20px; text-align: center; font-size: 13px; }
+footer p { font-size: 13px; }
+
+@media (max-width: 800px) {
+  .profile { flex-direction: column; text-align: center; padding: 28px 22px; }
+  .hobby { grid-template-columns: 1fr; }
+  .hobby img { height: 210px; }
+}
+@media (max-width: 640px) {
+  nav ul li a { padding: 12px 9px; font-size: 13px; }
+  .profile img { width: 130px; height: 130px; }
+  .profile h1 { font-size: 28px; }
+  .section-title { font-size: 23px; }
+  .tl { grid-template-columns: 72px 34px 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li class="logo">合肥探索小组</li>
+    <li><a href="index.html">团队主页</a></li>
+    <li><a href="member1.html">王明远</a></li>
+    <li><a href="member3.html">张浩然</a></li>
+    <li><a href="member4.html">陈雨桐</a></li>
+    <li><a href="skills.html">职业技能</a></li>
+  </ul>
+</nav>
+
+<main class="wrap">
+
+  <!-- ===== 个人名片 ===== -->
+  <section>
+    <span class="section-tag">PROFILE</span>
+    <div class="profile">
+      <img src="assets/member2.jpg" alt="李思琪照片">
+      <div>
+        <h1>李思琪</h1>
+        <span class="sid">学号 2023010102</span>
+        <p class="major">软件工程 · 2302班 · 女 · 安徽芜湖</p>
+        <p style="margin-top:10px; color:#6b6b60;">"用优雅的前端代码，做出有温度的界面。"</p>
+        <a class="mail" href="mailto:lisiqi@example.com" style="margin-top:14px; display:inline-block; padding:10px 22px; background:var(--green); color:#fff; border-radius:24px; font-size:14px;">电子邮箱：lisiqi@example.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 个人背景 ===== -->
+  <section>
+    <span class="section-tag">BACKGROUND</span>
+    <h2 class="section-title">个人背景</h2>
+    <p>我来自"半城山、半城水"的江城芜湖，长江与青弋江从家门口流过。高二那年，我用博客模板搭出自己的第一个"网站"，虽然简陋，但那份"把想法变成页面"的成就感让我确定了方向——做一个前端工程师。</p>
+    <p style="margin-top:12px;">2023 年我考入本校软件工程专业，加入了学校的美术社与编程社，在社团里既画海报、也写代码，逐渐体会到"设计与工程"结合的魅力。目前担任班级文艺委员，组织过两次迎新晚会。</p>
+  </section>
+
+  <!-- ===== 兴趣爱好 ===== -->
+  <section>
+    <span class="section-tag">HOBBIES</span>
+    <h2 class="section-title">兴趣爱好</h2>
+    <p class="section-sub">音乐与甜品，是我写代码之外的小确幸。</p>
+    <div class="hobby">
+      <img src="assets/hobby-guitar.jpg" alt="吉他爱好">
+      <div>
+        <h3 style="color:var(--accent); margin-bottom:10px;">吉他 &amp; 音乐</h3>
+        <p>大一开始自学民谣吉他，现在已经能弹唱二十多首歌，宿舍楼的晚会、社团的草地音乐会都有我的身影。我觉得写代码和弹吉他很像：都需要耐心打磨"细节"，一个和弦按到位、一行代码写规范，整体才会好听、好看。</p>
+        <p style="margin-top:10px;">休息日我还喜欢研究烘焙，烤过戚风蛋糕、蛋黄酥，常常带到实验室和队友分享——吃甜点的时候，大家debug 的怨气都会少一半。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 页面跳转 ===== -->
+  <section>
+    <span class="section-tag">LINKS</span>
+    <h2 class="section-title">快速跳转</h2>
+    <p class="section-sub">去团队主页看看大家的家乡介绍，或查看团队整体的职业技能发展规划。</p>
+    <div class="link-row">
+      <a href="index.html" style="background:var(--green); color:#fff; border:none;">回到团队主页</a>
+      <a href="skills.html" style="background:var(--accent); color:#fff; border:none;">查看职业技能页面</a>
+      <a href="mailto:lisiqi@example.com">发送邮件给我</a>
+    </div>
+  </section>
+
+  <!-- ===== 职业发展规划 ===== -->
+  <section>
+    <span class="section-tag">CAREER PLAN</span>
+    <h2 class="section-title">个人职业技能发展规划</h2>
+    <p class="section-sub">目标岗位：前端开发工程师 &rarr; 全栈工程师 / 体验设计师</p>
+    <div class="tl">
+      <div class="t">大一 · 打基础</div>
+      <div class="dot"><i></i></div>
+      <div class="c"><b>前端三剑客</b><p>扎实掌握 HTML / CSS / JavaScript，理解语义化标签与盒模型，能独立完成响应式静态页面。</p></div>
+
+      <div class="t">大二 · 学框架</div>
+      <div class="dot"><i></i></div>
+      <div class="c"><b>Vue / React 与工程化</b><p>系统学习 Vue3、React 与 Vite、Webpack 等工程化工具，掌握组件化开发与状态管理，做出完整单页应用。</p></div>
+
+      <div class="t">大三 · 全栈化</div>
+      <div class="dot"><i></i></div>
+      <div class="c"><b>Node.js 与实习</b><p>学习 Node.js、小程序开发与 UI 设计基础，参与企业实习或校园创业项目，打通前后端闭环。</p></div>
+
+      <div class="t">大四 · 入职场</div>
+      <div class="dot"><i></i></div>
+      <div class="c"><b>作品集 + 秋招</b><p>打磨个人作品集与技术博客，冲刺大厂前端/全栈岗位，入职后向体验工程与可视化方向成长。</p></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 合肥城市探索小组 · 李思琪 2023010102 · 课程演示项目</p>
+</footer>
+
+</body>
+</html>

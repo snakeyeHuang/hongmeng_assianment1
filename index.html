@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>合肥城市探索小组 · 团队主页</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f6b5e'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23faf6ef' font-family='serif'%3E%E5%90%88%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+/* ===== 全局基础 ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --ink: #22303a;
+  --paper: #faf6ef;
+  --accent: #b33a2b;
+  --green: #2f6b5e;
+  --gold: #c99a3f;
+  --line: #e3dacb;
+}
+/* 共用选择器：同时选中 h1、h2、h3 三个标签 */
+h1, h2, h3 { font-family: "Noto Serif SC", "Songti SC", "SimSun", serif; line-height: 1.35; }
+/* 共用选择器：同时选中 p、li 两个标签 */
+p, li { font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.9; font-size: 15px; }
+a { color: var(--green); text-decoration: none; }
+/* <a> 标签鼠标悬浮效果 */
+a:hover { color: var(--accent); text-decoration: underline; }
+body { background: var(--paper); color: var(--ink); }
+
+/* ===== 顶部导航（上下文选择器：nav 内部的 ul li a） ===== */
+nav { background: #1e2b30; position: sticky; top: 0; z-index: 99; }
+nav ul { display: flex; flex-wrap: wrap; align-items: center; list-style: none; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+nav ul li a { display: block; padding: 16px 14px; color: #f0ece2; font-size: 14px; letter-spacing: 1px; text-decoration: none; }
+nav ul li a:hover { color: #f3c969; background: #2a3c42; text-decoration: none; }
+nav .logo { font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 18px; color: #f3c969; margin-right: 18px; }
+
+/* ===== 版心与区块 ===== */
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+section { padding: 56px 0 20px; }
+.section-tag { display: inline-block; background: var(--green); color: #fff; font-size: 13px; letter-spacing: 3px; padding: 4px 14px; border-radius: 20px; margin-bottom: 14px; }
+.section-title { font-size: 30px; font-weight: 900; margin-bottom: 8px; }
+.section-sub { color: #6b6b60; font-size: 14px; margin-bottom: 26px; }
+
+/* ===== Hero 首屏 ===== */
+.hero { min-height: 420px; display: flex; align-items: center; justify-content: center; text-align: center;
+  background: linear-gradient(rgba(18,28,32,.62), rgba(18,28,32,.66)), url("assets/tianehu.jpg") center/cover no-repeat; color: #faf6ef; }
+.hero h1 { font-size: clamp(30px, 6vw, 52px); font-weight: 900; letter-spacing: 6px; }
+.hero p { margin-top: 14px; font-size: 16px; letter-spacing: 2px; color: #e8e0cf; }
+.hero .btn { display: inline-block; margin-top: 26px; padding: 12px 34px; background: var(--accent); color: #fff; border-radius: 30px; font-size: 14px; letter-spacing: 2px; }
+.hero .btn:hover { background: #8f2c1f; color: #fff; text-decoration: none; }
+
+/* ===== 成员卡片（类选择器） ===== */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; }
+.card { background: #fffdf8; border: 1px solid var(--line); border-radius: 14px; padding: 26px 20px; text-align: center; transition: transform .25s ease, box-shadow .25s ease; }
+.card:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(34,48,58,.14); }
+.card img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); }
+.card h3 { margin-top: 14px; font-size: 20px; }
+.card .name-link { font-size: 19px; font-weight: 700; display: inline-block; padding: 10px 8px; margin: -10px -8px; }
+.card .sid { display: inline-block; margin-top: 6px; background: #f3ecdf; color: #6b5a3a; font-size: 13px; letter-spacing: 1px; padding: 3px 12px; border-radius: 12px; }
+.card .major { margin-top: 8px; font-size: 14px; color: #7c7c70; }
+
+/* ===== 数据卡片 ===== */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; margin-top: 10px; }
+.stat { background: #fffdf8; border: 1px solid var(--line); border-left: 5px solid var(--accent); border-radius: 10px; padding: 20px 18px; }
+.stat b { display: block; font-size: 28px; color: var(--accent); font-family: "Noto Serif SC", serif; }
+.stat span { font-size: 14px; color: #7c7c70; }
+
+/* ===== 图文布局（上下文选择器：.city-grid 里的 figure 与 figcaption） ===== */
+.city-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+.city-grid figure { background: #fffdf8; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.city-grid figure a { display: block; position: relative; overflow: hidden; }
+.city-grid figure img { width: 100%; height: 210px; object-fit: cover; display: block; transition: transform .35s ease; }
+.city-grid figure a:hover img { transform: scale(1.06); }
+/* 图片上的悬浮提示条（上下文选择器） */
+.city-grid figure a .tip { position: absolute; right: 10px; bottom: 10px; background: rgba(24,34,38,.72); color: #ffe9b0; font-size: 12px; padding: 4px 12px; border-radius: 14px; letter-spacing: 1px; }
+.city-grid figure a:hover .tip { background: var(--accent); color: #fff; }
+.city-grid figure figcaption { padding: 14px 16px 18px; }
+.city-grid figure figcaption h3 { font-size: 18px; }
+.city-grid figure figcaption p { font-size: 13.5px; color: #6b6b60; margin-top: 6px; }
+
+/* ===== 文化 & 美食 ===== */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: center; }
+.two-col img { width: 100%; height: 320px; object-fit: cover; border-radius: 12px; border: 1px solid var(--line); }
+.food-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 8px; }
+.food-list li { list-style: none; background: #fffdf8; border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; font-size: 14px; }
+.food-list li b { color: var(--accent); }
+
+/* ===== 外部链接 ===== */
+.link-row { display: flex; flex-wrap: wrap; gap: 14px; }
+.link-row a { background: #fffdf8; border: 1px solid var(--line); padding: 12px 20px; border-radius: 10px; font-size: 14px; }
+.link-row a:hover { border-color: var(--accent); background: #fdf3ea; text-decoration: none; }
+
+/* ===== 页脚 ===== */
+footer { margin-top: 60px; background: #1e2b30; color: #b9c2bd; padding: 30px 20px; text-align: center; font-size: 13px; }
+footer p { font-size: 13px; line-height: 1.9; }
+footer a { color: #f3c969; }
+
+/* ===== 响应式设计：平板 ===== */
+@media (max-width: 960px) {
+  .two-col { grid-template-columns: 1fr; }
+  .two-col img { height: 240px; }
+  section { padding: 40px 0 10px; }
+}
+/* ===== 响应式设计：手机 ===== */
+@media (max-width: 640px) {
+  nav ul { padding: 0 12px; }
+  nav ul li a { padding: 13px 9px; font-size: 13px; }
+  .hero { min-height: 340px; }
+  .section-title { font-size: 24px; }
+  .card-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .card { padding: 18px 12px; }
+  .card img { width: 84px; height: 84px; }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .link-row a { flex: 1 1 44%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 导航栏 ===== -->
+<nav>
+  <ul>
+    <li class="logo">合肥探索小组</li>
+    <li><a href="index.html">团队主页</a></li>
+    <li><a href="#team">团队成员</a></li>
+    <li><a href="#city">认识合肥</a></li>
+    <li><a href="#food">合肥美食</a></li>
+    <li><a href="skills.html">职业技能</a></li>
+  </ul>
+</nav>
+
+<!-- ===== 首屏 ===== -->
+<header class="hero">
+  <div>
+    <h1>庐州风韵 · 合肥城市探索小组</h1>
+    <p>一座科创之城的千年烟火 —— 我们团队的家乡城市</p>
+    <a class="btn" href="#team" style="box-shadow:0 4px 14px rgba(0,0,0,.25);">认识我们的团队</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ===== 团队成员 ===== -->
+  <section id="team">
+    <span class="section-tag">TEAM</span>
+    <h2 class="section-title">团队成员</h2>
+    <p class="section-sub">以下是我们的团队个人介绍，点击姓名进入各自的个人主页。</p>
+    <div class="card-grid">
+      <div class="card">
+        <img src="assets/member1.jpg" alt="王明远照片">
+        <h3><a class="name-link" href="member1.html">黄浩</a></h3>
+        <span class="sid" style="letter-spacing:2px;">学号 SA26225136</span>
+        <p class="major">嵌入式系统2026级01班</p>
+      </div>
+      <div class="card">
+        <img src="assets/member2.jpg" alt="李思琪照片">
+        <h3><a class="name-link" href="member2.html">黄陈</a></h3>
+        <span class="sid" style="letter-spacing:2px;">学号 SA26225132</span>
+        <p class="major">嵌入式系统2026级01班</p>
+      </div>
+      <div class="card">
+        <img src="assets/member3.jpg" alt="张浩然照片">
+        <h3><a class="name-link" href="member3.html">张浩然</a></h3>
+        <span class="sid" style="letter-spacing:2px;">学号 2023010103</span>
+        <p class="major">数据科学与大数据技术 · 2303班</p>
+      </div>
+      <div class="card">
+        <img src="assets/member4.jpg" alt="陈雨桐照片">
+        <h3><a class="name-link" href="member4.html">陈雨桐</a></h3>
+        <span class="sid" style="letter-spacing:2px;">学号 2023010104</span>
+        <p class="major">人工智能 · 2304班</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 地理位置 ===== -->
+  <section id="city">
+    <span class="section-tag">LOCATION</span>
+    <h2 class="section-title">地理位置</h2>
+    <p class="section-sub">合肥在哪里？</p>
+    <div class="two-col">
+      <div>
+        <p>合肥，安徽省省会，地处<strong>江淮之间、环抱巢湖</strong>，因东淝河与南淝河在此汇流而得名，古称庐州、庐阳。合肥位于安徽省中部，是长三角地区重要的中心城市、综合性国家科学中心，也是"一带一路"与长江经济带战略的双节点城市、G60科创走廊中心城市。</p>
+        <p style="margin-top:12px; color:#6b6b60;">全市总面积约 <b style="color:var(--accent);">1.14 万平方公里</b>，占安徽省总面积约 8.2%，下辖瑶海、庐阳、蜀山、包河 4 个区，肥东、肥西、长丰、庐江、巢湖 5 个县（市）以及多个国家级开发区。</p>
+        <p style="margin-top:12px;"><a href="https://www.hefei.gov.cn/mlhf/index.html" target="_blank" rel="noopener">前往合肥市人民政府官网了解更多 &rarr;</a></p>
+      </div>
+      <!-- 位置示意图 -->
+      <svg viewBox="0 0 420 300" role="img" aria-label="合肥位置示意图" style="width:100%;height:auto;background:#eef3ec;border-radius:12px;border:1px solid var(--line);">
+        <rect x="150" y="30" width="240" height="210" fill="#dbe7d5" stroke="#8fb39f"/>
+        <text x="270" y="46" font-size="13" fill="#55735f" text-anchor="middle">安徽省</text>
+        <circle cx="252" cy="118" r="26" fill="#c9913f" stroke="#a9762c" stroke-width="2"/>
+        <text x="252" y="124" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">合肥</text>
+        <path d="M140 210 Q200 150 300 168 Q340 178 360 200" stroke="#5f86a8" stroke-width="12" fill="none" stroke-linecap="round" opacity="0.75"/>
+        <text x="300" y="238" font-size="12" fill="#3f6a8c">巢湖（中国五大淡水湖之一）</text>
+        <line x1="252" y1="118" x2="252" y2="205" stroke="#a9762c" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <text x="150" y="282" font-size="11" fill="#8a8a7a">江淮之间 · 环抱巢湖 · 长三角西翼</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ===== 人口与城市 ===== -->
+  <section>
+    <span class="section-tag">POPULATION</span>
+    <h2 class="section-title">人口与城市</h2>
+    <p class="section-sub">合肥正加速迈向千万人口、万亿 GDP 的特大城市。</p>
+    <div class="stat-grid">
+      <div class="stat"><b>1000.5万</b><span>2025年末常住人口（合肥市统计局）</span></div>
+      <div class="stat"><b>86.4%</b><span>常住人口城镇化率</span></div>
+      <div class="stat"><b>14210亿</b><span>2025年全年地区生产总值（亿元）</span></div>
+      <div class="stat"><b>35岁+50%</b><span>35岁以下青年人口占比超五成</span></div>
+    </div>
+    <p style="margin-top:16px; font-size:13px; color:#8a8a7a;">合肥是"养人的地方、创新的天地"：中国科学技术大学坐落于此，拥有"人造太阳"EAST、量子计算原型机"九章"等大科学装置与成果，科大讯飞、京东方、蔚来等企业在此扎根。</p>
+  </section>
+
+  <!-- ===== 风景名胜 ===== -->
+  <section>
+    <span class="section-tag">SCENERY</span>
+    <h2 class="section-title">风景名胜</h2>
+    <p class="section-sub">2500 年古庐州，从三国古战场到徽派水乡，点击图片可了解更多。</p>
+    <div class="city-grid">
+      <figure>
+        <a href="https://baike.baidu.com/item/三河古镇" target="_blank" rel="noopener">
+          <img src="assets/sanhe.jpg" alt="三河古镇水乡风光">
+          <span class="tip">查看详情</span>
+        </a>
+        <figcaption>
+          <h3>三河古镇 · 5A 景区</h3>
+          <p>因丰乐河、杭埠河、小南河三水交汇得名，2500 多年历史的水乡古镇，白墙黛瓦、青石巷陌。</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="https://baike.baidu.com/item/包公园" target="_blank" rel="noopener">
+          <img src="assets/baogongyuan.jpg" alt="包公园清风阁">
+          <span class="tip">查看详情</span>
+        </a>
+        <figcaption>
+          <h3>包公园 · 清风阁</h3>
+          <p>为纪念北宋清官包拯而建的环湖园林，清风阁可俯瞰包河，是合肥的城市文化地标。</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="https://baike.baidu.com/item/逍遥津公园" target="_blank" rel="noopener">
+          <img src="assets/xiaoyaoyou.jpg" alt="逍遥津公园逍遥湖">
+          <span class="tip">查看详情</span>
+        </a>
+        <figcaption>
+          <h3>逍遥津公园</h3>
+          <p>三国古战场，"张辽威震逍遥津"的故事就发生于此，如今是老合肥人最爱的城市公园。</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="https://baike.baidu.com/item/巢湖" target="_blank" rel="noopener">
+          <img src="assets/chaohu.jpg" alt="巢湖风光">
+          <span class="tip">查看详情</span>
+        </a>
+        <figcaption>
+          <h3>巢湖 · 五大淡水湖之一</h3>
+          <p>八百里巢湖环抱合肥，湖天一色、水鸟翔集，环湖大道串联起绝美滨湖风光。</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="https://baike.baidu.com/item/李鸿章故居" target="_blank" rel="noopener">
+          <img src="assets/lihongzhang.jpg" alt="李鸿章故居李府大门">
+          <span class="tip">查看详情</span>
+        </a>
+        <figcaption>
+          <h3>李鸿章故居（李府）</h3>
+          <p>位于淮河路步行街中段，晚清江淮民居代表，合肥现存规模最大、保存最完整的名人故居。</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="https://www.ah.gov.cn/hfwy/yxah/xzqh/index.html" target="_blank" rel="noopener">
+          <img src="assets/tianehu.jpg" alt="天鹅湖与政务区天际线">
+          <span class="tip">查看详情</span>
+        </a>
+        <figcaption>
+          <h3>天鹅湖 · 政务区天际线</h3>
+          <p>合肥现代都市新名片，大剧院、安徽广电与摩天楼群环湖而立，夜景璀璨。</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== 文化 ===== -->
+  <section>
+    <span class="section-tag">CULTURE</span>
+    <h2 class="section-title">城市文化</h2>
+    <p class="section-sub">庐剧唱腔、包公铁面、三国遗韵，与科创基因交织成独特的"合肥气质"。</p>
+    <div class="two-col">
+      <div>
+        <ul class="food-list" style="grid-template-columns:1fr;">
+          <li><b>庐剧</b> —— 安徽地方戏曲大戏，国家级非物质文化遗产，唱腔质朴、乡土气息浓郁。</li>
+          <li><b>包公文化</b> —— 包拯"铁面无私"的形象深入人心，包公园、包公祠是重要的文化载体。</li>
+          <li><b>三国文化</b> —— 逍遥津之战、张辽止啼等典故流传千年，合肥因此有"三国故地"之称。</li>
+          <li><b>徽文化与科技</b> —— 徽派建筑、徽商精神浸润城市肌理，同时"科创合肥"正成为新的文化名片。</li>
+          <li><b>非遗美食</b> —— 庐州烤鸭、三河米饺、四大名点等市级/省级非遗项目传承百年风味。</li>
+        </ul>
+      </div>
+      <img src="assets/leijie.jpg" alt="合肥罍街夜市" style="height:280px;">
+    </div>
+  </section>
+
+  <!-- ===== 美食 ===== -->
+  <section id="food">
+    <span class="section-tag">FOOD</span>
+    <h2 class="section-title">合肥美食</h2>
+    <p class="section-sub">徽菜咸鲜、小吃烟火，来合肥必吃的这几样，点击图片了解更多。</p>
+    <div class="city-grid">
+      <figure>
+        <a href="https://baike.baidu.com/item/庐州烤鸭" target="_blank" rel="noopener">
+          <img src="assets/luzhoukaoya.jpg" alt="庐州烤鸭">
+          <span class="tip">查看详情</span>
+        </a>
+        <figcaption>
+          <h3>庐州烤鸭</h3>
+          <p>合肥美食名片，皮脆肉嫩、肥而不腻，搭配甜卤与鸭油烧饼，是"千年庐州城，烤鸭最出名"。</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="https://baike.baidu.com/item/臭鳜鱼" target="_blank" rel="noopener">
+          <img src="assets/chouguiyu.jpg" alt="徽菜臭鳜鱼">
+          <span class="tip">查看详情</span>
+        </a>
+        <figcaption>
+          <h3>臭鳜鱼</h3>
+          <p>徽菜"头牌"，闻着臭吃着香，肉质紧实呈蒜瓣状，是安徽人餐桌上的灵魂硬菜。</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="https://baike.baidu.com/item/三河米饺" target="_blank" rel="noopener">
+          <img src="assets/sanhemijiao.jpg" alt="三河米饺">
+          <span class="tip">查看详情</span>
+        </a>
+        <figcaption>
+          <h3>三河米饺</h3>
+          <p>三河古镇非遗小吃，籼米皮包土猪肉馅，油炸后外酥里糯，相传曾是太平军的军粮。</p>
+        </figcaption>
+      </figure>
+    </div>
+    <ul class="food-list" style="margin-top:22px;">
+      <li><b>合肥四大名点</b>：麻饼、烘糕、寸金、白切，200 多年历史的传统糕点。</li>
+      <li><b>下塘烧饼</b>：现场抛饼、炭火烤制，酥脆咸香，源自长丰下塘。</li>
+      <li><b>吴山贡鹅</b>：二十余种香料慢卤，卤香浓郁、肉质紧实，千年宫廷卤味。</li>
+      <li><b>肥西老母鸡汤</b>：汤色金黄、滋补养生，合肥人待客的"硬核"招牌。</li>
+      <li><b>罍街夜市</b>：罍+村的市井烟火，小龙虾配啤酒，是合肥夏夜的打开方式。</li>
+    </ul>
+  </section>
+
+  <!-- ===== 获取更多信息 ===== -->
+  <section>
+    <span class="section-tag">MORE</span>
+    <h2 class="section-title">获取更多信息</h2>
+    <p class="section-sub">以下官方与权威渠道可获取更详细的合肥城市资讯。</p>
+    <div class="link-row">
+      <a href="https://www.hefei.gov.cn/mlhf/index.html" target="_blank" rel="noopener">合肥市人民政府 · 魅力合肥</a>
+      <a href="https://www.ah.gov.cn/hfwy/yxah/xzqh/index.html" target="_blank" rel="noopener">安徽省人民政府 · 合肥行政区划</a>
+      <a href="https://tjj.hefei.gov.cn/public/14891/112441085.html" target="_blank" rel="noopener">合肥市统计局 · 常住人口公报</a>
+      <a href="http://ah.anhuinews.com/gdxw/202507/t20250718_8645854.html" target="_blank" rel="noopener">中安在线 · 巢湖北岸风光</a>
+      <a href="http://ah.people.com.cn/n2/2024/0113/c227131-40713029-2.html" target="_blank" rel="noopener">人民网安徽 · 巢湖落日</a>
+      <a href="https://m.ctrip.com/webapp/you/community/detail?articleId=331199898" target="_blank" rel="noopener">携程 · 合肥2日游攻略</a>
+      <a href="https://m.ctrip.com/webapp/you/community/detail?articleId=304745645" target="_blank" rel="noopener">携程 · 合肥美食指南</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 合肥城市探索小组 · 王明远 2023010101 / 李思琪 2023010102 / 张浩然 2023010103 / 陈雨桐 2023010104</p>
+  <p>数据来源：合肥市人民政府、合肥市统计局（2025年末常住人口 1000.5 万）、安徽省人民政府。成员照片与信息为课程演示占位数据。</p>
+  <p><a href="skills.html">查看职业技能发展规划 &rarr;</a></p>
+</footer>
+
+</body>
+</html>

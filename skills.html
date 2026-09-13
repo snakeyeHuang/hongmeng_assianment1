@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>职业技能发展规划 · 团队页面</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f6b5e'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23faf6ef' font-family='serif'%3E%E5%90%88%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --ink:#22303a; --paper:#faf6ef; --accent:#b33a2b; --green:#2f6b5e; --gold:#c99a3f; --line:#e3dacb; }
+/* 共用选择器：h1、h2、h3 与 p、li */
+h1, h2, h3 { font-family: "Noto Serif SC", "Songti SC", "SimSun", serif; line-height: 1.35; }
+p, li { font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.9; font-size: 15px; }
+a { color: var(--green); text-decoration: none; }
+/* <a> 标签悬浮效果 */
+a:hover { color: var(--accent); text-decoration: underline; }
+body { background: var(--paper); color: var(--ink); }
+
+nav { background: #1e2b30; position: sticky; top: 0; z-index: 99; }
+nav ul { display: flex; flex-wrap: wrap; align-items: center; list-style: none; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+/* 上下文选择器：nav 内部的 li a */
+nav ul li a { display: block; padding: 15px 14px; color: #f0ece2; font-size: 14px; letter-spacing: 1px; text-decoration: none; }
+nav ul li a:hover { color: #f3c969; background: #2a3c42; text-decoration: none; }
+nav .logo { font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 18px; color: #f3c969; margin-right: 18px; }
+
+.page-hero { background: linear-gradient(rgba(20,32,36,.72), rgba(20,32,36,.72)), url("assets/chaohu.jpg") center/cover no-repeat; color: #faf6ef; text-align: center; padding: 74px 20px; }
+.page-hero h1 { font-size: clamp(26px, 5vw, 42px); letter-spacing: 5px; font-weight: 900; }
+.page-hero p { margin-top: 12px; color: #e8e0cf; font-size: 15px; letter-spacing: 2px; }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+section { padding: 48px 0 8px; }
+.section-tag { display: inline-block; background: var(--green); color: #fff; font-size: 12px; letter-spacing: 3px; padding: 4px 14px; border-radius: 20px; margin-bottom: 14px; }
+.section-title { font-size: 28px; font-weight: 900; margin-bottom: 6px; }
+.section-sub { color: #6b6b60; font-size: 14px; margin-bottom: 24px; }
+
+/* 职业方向卡片（类选择器） */
+.dir-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.dir-card { background: #fffdf8; border: 1px solid var(--line); border-top: 5px solid var(--gold); border-radius: 12px; padding: 24px 20px; }
+.dir-card img { width: 74px; height: 74px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); }
+.dir-card h3 { margin-top: 12px; font-size: 19px; }
+.dir-card .role { display: inline-block; margin-top: 8px; background: #fdeee9; color: var(--accent); font-size: 13px; font-weight: 700; padding: 3px 12px; border-radius: 12px; }
+.dir-card .tags { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.dir-card .tags span { background: #eef4f0; color: var(--green); font-size: 12px; padding: 3px 10px; border-radius: 10px; }
+
+/* 技能对比表：显式列宽 */
+.table-box { overflow-x: auto; background: #fffdf8; border: 1px solid var(--line); border-radius: 12px; }
+table { width: 100%; table-layout: fixed; border-collapse: collapse; min-width: 640px; }
+colgroup col:nth-child(1) { width: 12%; }
+colgroup col:nth-child(2) { width: 20%; }
+colgroup col:nth-child(3) { width: 32%; }
+colgroup col:nth-child(4) { width: 18%; }
+colgroup col:nth-child(5) { width: 18%; }
+th, td { padding: 13px 14px; text-align: left; font-size: 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { background: #1e2b30; color: #f3c969; font-weight: 700; letter-spacing: 1px; }
+td { line-height: 1.8; }
+tbody tr:hover { background: #fdf6ea; }
+
+/* 团队路线 */
+.tl { display: grid; grid-template-columns: 120px 44px 1fr; }
+.tl .t { text-align: right; padding: 16px 0; font-weight: 700; color: var(--accent); font-size: 14px; }
+.tl .dot { justify-self: center; position: relative; }
+.tl .dot i { display: block; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); margin-top: 22px; box-shadow: 0 0 0 4px #f3e7cd; }
+.tl .dot::after { content: ""; position: absolute; left: 5px; top: 38px; bottom: -12px; width: 2px; background: var(--line); }
+.tl .c { padding: 12px 0 16px 6px; }
+.tl .c b { display: block; font-size: 15px; margin-bottom: 4px; }
+.tl .c p { font-size: 13.5px; color: #6b6b60; }
+.tl > div:last-child .dot::after { display: none; }
+
+.link-row { display: flex; flex-wrap: wrap; gap: 14px; }
+.link-row a { background: #fffdf8; border: 1px solid var(--line); padding: 12px 22px; border-radius: 10px; font-size: 14px; }
+.link-row a:hover { border-color: var(--accent); background: #fdf3ea; text-decoration: none; }
+
+footer { margin-top: 60px; background: #1e2b30; color: #b9c2bd; padding: 26px 20px; text-align: center; font-size: 13px; }
+footer p { font-size: 13px; }
+
+@media (max-width: 800px) {
+  .dir-grid { grid-template-columns: 1fr 1fr; }
+  .tl { grid-template-columns: 90px 36px 1fr; }
+}
+@media (max-width: 640px) {
+  nav ul li a { padding: 12px 9px; font-size: 13px; }
+  .page-hero { padding: 52px 16px; }
+  .dir-grid { grid-template-columns: 1fr; }
+  .section-title { font-size: 23px; }
+  .tl { grid-template-columns: 76px 32px 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li class="logo">合肥探索小组</li>
+    <li><a href="index.html">团队主页</a></li>
+    <li><a href="member1.html">王明远</a></li>
+    <li><a href="member2.html">李思琪</a></li>
+    <li><a href="member3.html">张浩然</a></li>
+    <li><a href="member4.html">陈雨桐</a></li>
+    <li><a href="skills.html">职业技能</a></li>
+  </ul>
+</nav>
+
+<header class="page-hero">
+  <h1 style="color:#faf6ef; text-shadow:0 2px 10px rgba(0,0,0,.35);">职业技能发展规划</h1>
+  <p style="letter-spacing:3px;">Career &amp; Skill Development Plan —— 四位成员的成长路线图</p>
+</header>
+
+<main class="wrap">
+
+  <!-- ===== 职业方向总览 ===== -->
+  <section>
+    <span class="section-tag" style="background:#b33a2b;">CAREER</span>
+    <h2 class="section-title" style="letter-spacing:2px;">团队职业方向总览</h2>
+    <p class="section-sub" style="color:#8a8a7a;">四名成员覆盖后端、前端、数据与算法四大方向，技能互补、协作成团。</p>
+    <div class="dir-grid">
+      <div class="dir-card" style="border-top-color:#b33a2b;">
+        <img src="assets/member1.jpg" alt="王明远">
+        <h3 style="color:#22303a;">王明远</h3>
+        <span class="role">后端开发工程师</span>
+        <div class="tags">
+          <span>Java</span><span>Spring Boot</span><span>MySQL</span><span>Redis</span><span>Docker / K8s</span>
+        </div>
+      </div>
+      <div class="dir-card" style="border-top-color:#c99a3f;">
+        <img src="assets/member2.jpg" alt="李思琪">
+        <h3 style="color:#22303a;">李思琪</h3>
+        <span class="role">前端开发工程师</span>
+        <div class="tags">
+          <span>HTML / CSS / JS</span><span>Vue / React</span><span>TypeScript</span><span>Node.js</span>
+        </div>
+      </div>
+      <div class="dir-card" style="border-top-color:#2f6b5e;">
+        <img src="assets/member3.jpg" alt="张浩然">
+        <h3 style="color:#22303a;">张浩然</h3>
+        <span class="role">数据分析师</span>
+        <div class="tags">
+          <span>Python</span><span>SQL</span><span>Pandas</span><span>机器学习</span><span>Spark</span>
+        </div>
+      </div>
+      <div class="dir-card" style="border-top-color:#5f86a8;">
+        <img src="assets/member4.jpg" alt="陈雨桐">
+        <h3 style="color:#22303a;">陈雨桐</h3>
+        <span class="role">AI 算法工程师</span>
+        <div class="tags">
+          <span>Python</span><span>PyTorch</span><span>深度学习</span><span>NLP</span><span>大模型微调</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 技能对比表 ===== -->
+  <section>
+    <span class="section-tag" style="background:#b33a2b;">COMPARISON</span>
+    <h2 class="section-title" style="letter-spacing:2px;">技能发展对比表</h2>
+    <p class="section-sub" style="color:#8a8a7a;">以下为四人大学四年关键技能目标对照（2023 级，至 2027 届毕业）。</p>
+    <div class="table-box">
+      <table>
+        <colgroup>
+          <col><col><col><col><col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th>成员</th>
+            <th>目标岗位</th>
+            <th>核心技能栈</th>
+            <th>目标证书 / 成果</th>
+            <th>关键时间点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700;">王明远<br><span style="font-size:12px; color:#8a8a7a;">2023010101</span></td>
+            <td>后端开发 &rarr; 云原生架构</td>
+            <td>Java、Spring Boot、MySQL、Redis、Kafka、Docker、Kubernetes</td>
+            <td>软件设计师（软考）证书、实习项目上线</td>
+            <td>大二暑假完成首个部署项目，大三暑期实习</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;">李思琪<br><span style="font-size:12px; color:#8a8a7a;">2023010102</span></td>
+            <td>前端开发 &rarr; 全栈 / 体验设计</td>
+            <td>HTML、CSS、JavaScript、TypeScript、Vue3、React、Node.js</td>
+            <td>个人作品集网站、前端开源贡献</td>
+            <td>大二参加前端训练营，大三企业实习</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;">张浩然<br><span style="font-size:12px; color:#8a8a7a;">2023010103</span></td>
+            <td>数据分析 &rarr; 数据科学 / BI</td>
+            <td>Python、SQL、NumPy、Pandas、Scikit-learn、Tableau、Spark</td>
+            <td>数据分析竞赛获奖、Kaggle 项目</td>
+            <td>大二参加数据竞赛，大三暑期实习</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;">陈雨桐<br><span style="font-size:12px; color:#8a8a7a;">2023010104</span></td>
+            <td>AI 算法 &rarr; 大模型 / 多模态</td>
+            <td>Python、PyTorch、机器学习、深度学习、Transformer、LoRA 微调</td>
+            <td>科研论文 / 开源模型贡献、竞赛获奖</td>
+            <td>大三加入课题组，争取保研或算法实习</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== 团队路线图 ===== -->
+  <section>
+    <span class="section-tag" style="background:#b33a2b;">ROADMAP</span>
+    <h2 class="section-title" style="letter-spacing:2px;">团队共同发展路线</h2>
+    <p class="section-sub" style="color:#8a8a7a;">除个人技能外，团队约定以下共同行动，确保四年不掉队。</p>
+    <div class="tl">
+      <div class="t">大一 · 筑基</div>
+      <div class="dot"><i></i></div>
+      <div class="c"><b>统一技术基础</b><p>全员完成"编程基础 + 数据结构"双修，每周一次组内算法刷题打卡，建立 Git 协作习惯。</p></div>
+
+      <div class="t">大二 · 成型</div>
+      <div class="dot"><i></i></div>
+      <div class="c"><b>联合项目实战</b><p>四人合作开发"合肥城市探索"校园 Web 项目（即本网站），后端、前端、数据、算法四端打通，共同上线。</p></div>
+
+      <div class="t">大三 · 深潜</div>
+      <div class="dot"><i></i></div>
+      <div class="c"><b>实习与竞赛</b><p>各自进入企业实习或实验室，同时组队参加省级以上学科竞赛，积累项目与荣誉履历。</p></div>
+
+      <div class="t">大四 · 出击</div>
+      <div class="dot"><i></i></div>
+      <div class="c"><b>求职与深造</b><p>完成毕业设计，共享秋招/保研信息，互相模拟面试，全员达成理想去向。</p></div>
+    </div>
+  </section>
+
+  <!-- ===== 跳转 ===== -->
+  <section>
+    <span class="section-tag" style="background:#b33a2b;">LINKS</span>
+    <h2 class="section-title" style="letter-spacing:2px;">相关页面</h2>
+    <p class="section-sub" style="color:#8a8a7a;">返回团队主页，或查看各成员个人主页与详细职业规划。</p>
+    <div class="link-row">
+      <a href="index.html" style="background:var(--green); color:#fff; border:none;">回到团队主页</a>
+      <a href="member1.html" style="color:#22303a;">王明远的个人主页</a>
+      <a href="member2.html" style="color:#22303a;">李思琪的个人主页</a>
+      <a href="member3.html" style="color:#22303a;">张浩然的个人主页</a>
+      <a href="member4.html" style="color:#22303a;">陈雨桐的个人主页</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 合肥城市探索小组 · 职业技能发展规划页 · 课程演示项目</p>
+</footer>
+
+</body>
+</html>
